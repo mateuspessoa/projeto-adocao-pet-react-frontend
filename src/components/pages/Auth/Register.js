@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import React from 'react'
 import Input from '../../form/Input'
 
@@ -7,15 +9,25 @@ import "../../form/Form.css";
 
 const Register = () => {
 
-  function handleOnChange(e) {
+  const [user, setUser] = useState({})
 
+  //Formando o usuário através dos dados que são digitados no input para enviar ao back-end
+  function handleOnChange(e) {
+    setUser({ ...user, [e.target.name]: e.target.value })
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    
+    //Enviar o usuário para o banco
+    console.log(user)
   }
 
   return (
     <section className='form_container'>
         <h1>Registrar</h1>
 
-        <form>
+        <form onSubmit={handleSubmit}>
             <Input text="Nome" type="text" name="name" placeholder="Digite o seu nome" handleOnChange={handleOnChange} />
             <Input text="Telefone" type="text" name="phone" placeholder="Digite o seu telefone" handleOnChange={handleOnChange} />
             <Input text="Email" type="email" name="email" placeholder="Digite o seu email" handleOnChange={handleOnChange} />
