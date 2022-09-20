@@ -1,6 +1,10 @@
 import React from 'react'
 import Input from '../../form/Input'
 
+import { Link } from 'react-router-dom'
+
+import "../../form/Form.css";
+
 const Register = () => {
 
   function handleOnChange(e) {
@@ -8,7 +12,7 @@ const Register = () => {
   }
 
   return (
-    <section>
+    <section className='form_container'>
         <h1>Registrar</h1>
 
         <form>
@@ -19,6 +23,8 @@ const Register = () => {
             <Input text="Confirmação de Senha" type="password" name="confirmpassword" placeholder="Confirme a sua senha" handleOnChange={handleOnChange} />
             <input type="submit" value="Cadastrar" />
         </form>
+
+        <p>Já tem uma conta? <Link to='/login'>Faça o Login</Link></p>
 
     </section>
   )
