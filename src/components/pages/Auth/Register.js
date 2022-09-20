@@ -1,15 +1,21 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import React from 'react'
 import Input from '../../form/Input'
 
 import { Link } from 'react-router-dom'
 
+//Context
+import { Context } from '../../../context/UserContext';
+
 import "../../form/Form.css";
 
 const Register = () => {
 
   const [user, setUser] = useState({})
+
+  //Extraindo o register que está vindo via contexto, mas está no Hook
+  const { register } = useContext(Context)
 
   //Formando o usuário através dos dados que são digitados no input para enviar ao back-end
   function handleOnChange(e) {
@@ -20,7 +26,7 @@ const Register = () => {
     e.preventDefault()
     
     //Enviar o usuário para o banco
-    console.log(user)
+    register(user)
   }
 
   return (
