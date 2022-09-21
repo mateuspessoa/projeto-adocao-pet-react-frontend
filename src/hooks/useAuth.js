@@ -1,14 +1,32 @@
 import api from "../utils/api";
 import { useState, useEffect } from "react";
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import useFlashMessage from './useFlashMessage'
 
 
 
 export default function useAuth() {
 
+    //Estado que vai dizer se o usuário está autenticado ou não
+    const [authenticated, setAuthenticated] = useState(false)
+
     //Destruturando o setFlashMessage que vem do Hook para que o evento seja disparado
     const { setFlashMessage } = useFlashMessage()
+
+    //Serve para mudar a página do usuário após o cadastro
+    const navigate = useNavigate()
+
+    //Inserir o token na API automaticamente e verificar sem precisar ficar inserindo toda hora
+    useEffect(() => {
+
+        const token =localStorage.getItem('token')
+
+        if(token) {
+            api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
+            setAuthenticated(true)
+        }
+
+    }, [])
 
     //Hooke para registro de usuário
     async function register(user) {
@@ -23,7 +41,7 @@ export default function useAuth() {
                 return response.data
             })
 
-            console.log(data)
+            await authUser(data)
 
         } catch(error) {
             //Tratamento de erros
@@ -35,6 +53,20 @@ export default function useAuth() {
         setFlashMessage(msgText, msgType)
     }
 
-    return { register }
+    //Função para receber os dados do usuário cadastrado
+    async function authUser(data) {
+
+        //Diz que o usuário está logado
+        setAuthenticated(true)
+
+        //Captura o token do usuário e salva no localstorage
+        localStorage.setItem('token', JSON.stringify(data.token))
+
+        //Redericiona para a pagina Home
+        navigate('/')
+
+    }
+
+    return { authenticated, register }
 
 }
