@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 
 export default function useAuth() {
 
+    //Hooke para registro de usuário
     async function register(user) {
 
         try {
