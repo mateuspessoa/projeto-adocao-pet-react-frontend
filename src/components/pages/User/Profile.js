@@ -6,6 +6,7 @@ import "../../form/Form.css"
 import Input from "../../form/Input";
 
 import useFlashMessage from '../../../hooks/useFlashMessage';
+import RoundedImage from '../../layout/RoundedImage';
 
 //Contém a função para preencher os campos de edição do usuário
 const Profile = () => {
@@ -75,7 +76,7 @@ const Profile = () => {
         <div className="profile_header">
             <h1>Perfil</h1>
             {(user.image || preview) && (
-              <img src={preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}/images/users/${user.image}`} alt={user.name} />
+              <RoundedImage src={preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}/images/users/${user.image}`} alt={user.name} />
             )}
         </div>
 
