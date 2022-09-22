@@ -5,6 +5,8 @@ import "./Profile.css";
 import "../../form/Form.css"
 import Input from "../../form/Input";
 
+import useFlashMessage from '../../../hooks/useFlashMessage';
+
 //Contém a função para preencher os campos de edição do usuário
 const Profile = () => {
 
@@ -13,6 +15,8 @@ const Profile = () => {
 
     //Pegar o token do usuário logado para se comunicar com a API
     const [token] = useState(localStorage.getItem('token') || '')
+
+    const { setFlashMessage } = useFlashMessage()
 
     //Preecher os campos assim que a página é renderizada
     useEffect(() => {
@@ -29,11 +33,38 @@ const Profile = () => {
     }, [token])
 
   function onFileChange(e) {
-
+    setUser({ ...user, [e.target.name]: e.target.files[0] })
   }
   
   function handleOnChange(e) {
+    setUser({ ...user, [e.target.name]: e.target.value })
+  }
 
+  //Função para fazer a alteração no banco de dados
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    let msgType = 'success'
+
+    const formData = new FormData()
+
+    await Object.keys(user).forEach((key) => 
+      formData.append(key, user[key]),
+    )
+
+    const data = await api.patch(`/users/edit/${user._id}`, formData, {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(token)}`,
+        'Content-Type': 'multipart/form-data'
+      }
+    }).then((response) => {
+      return response.data
+    }).catch((err) => {
+      msgType = 'error'
+      return err.response.data
+    })
+
+    setFlashMessage(data.message, msgType)
   }
 
   return (
@@ -43,7 +74,7 @@ const Profile = () => {
             <p>Preview de Imagem</p>
         </div>
 
-        <form className="form_container">
+        <form onSubmit={handleSubmit} className="form_container">
             <Input text="Imagem" type="file" name="image" handleOnChange={onFileChange} />
             <Input text="Email" type="email" name="email" placeholder="Digite o seu email" handleOnChange={handleOnChange} value={user.email || ''} />
 
