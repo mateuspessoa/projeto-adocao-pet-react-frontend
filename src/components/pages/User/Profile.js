@@ -1,12 +1,32 @@
+import api from '../../../utils/api'
 import { useState, useEffect } from "react";
 
 import "./Profile.css";
 import "../../form/Form.css"
 import Input from "../../form/Input";
 
+//Contém a função para preencher os campos de edição do usuário
 const Profile = () => {
 
+    //Acesso aos dados do usuário 
     const [user, setUser] = useState({})
+
+    //Pegar o token do usuário logado para se comunicar com a API
+    const [token] = useState(localStorage.getItem('token') || '')
+
+    //Preecher os campos assim que a página é renderizada
+    useEffect(() => {
+
+      //Envia o token para receber os dados
+      api.get('/users/checkuser', {
+        headers: {
+          Authorization: `Bearer ${JSON.parse(token)}`
+        }
+      }).then((response) => {
+        setUser(response.data)
+      })
+
+    }, [token])
 
   function onFileChange(e) {
 
