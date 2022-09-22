@@ -10,6 +10,8 @@ import useFlashMessage from '../../../hooks/useFlashMessage';
 //Contém a função para preencher os campos de edição do usuário
 const Profile = () => {
 
+    const [preview, setPreview] = useState()
+
     //Acesso aos dados do usuário 
     const [user, setUser] = useState({})
 
@@ -33,6 +35,7 @@ const Profile = () => {
     }, [token])
 
   function onFileChange(e) {
+    setPreview(e.target.files[0])
     setUser({ ...user, [e.target.name]: e.target.files[0] })
   }
   
@@ -71,7 +74,9 @@ const Profile = () => {
     <section>
         <div className="profile_header">
             <h1>Perfil</h1>
-            <p>Preview de Imagem</p>
+            {(user.image || preview) && (
+              <img src={preview ? URL.createObjectURL(preview) : `${process.env.REACT_APP_API}/images/users/${user.image}`} alt={user.name} />
+            )}
         </div>
 
         <form onSubmit={handleSubmit} className="form_container">
