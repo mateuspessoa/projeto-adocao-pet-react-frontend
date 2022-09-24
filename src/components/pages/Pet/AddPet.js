@@ -10,7 +10,6 @@ import PetForm from '../../form/PetForm'
 import useFlashMessage from '../../../hooks/useFlashMessage'
 
 import './AddPet.css'
-import Select from '../../form/Select'
 
 const AddPet = () => {
 
@@ -27,7 +26,7 @@ const AddPet = () => {
   async function registerPet(pet) {
     let msgType = 'success'
 
-    const formData = new FormData
+    const formData = new FormData()
 
     //Serve para pegar cada item do pet e jogar no formData para que ele consiga fazer o upload de imagens
     await Object.keys(pet).forEach((key) => {
