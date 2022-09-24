@@ -1,4 +1,4 @@
-import './MyPets.css'
+import './Dashboard.css'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import RoundedImage from '../../layout/RoundedImage'
@@ -38,7 +38,27 @@ const MyPets = () => {
       </div>
 
       <div>
-        {pets.length > 0 && <p>Meus Pets cadastrados</p>}
+        {pets.length > 0 && 
+          pets.map((pet) => (
+            <div key={pet._id}>
+              <RoundedImage src={`${process.env.REACT_APP_API}/images/pets/${pet.images[0]}`} alt={pet.name} width="75px" />
+              <span className="bold">{pet.name}</span>
+
+              <div className="actions">
+                {pet.available ? 
+                (<>
+                  {pet.adopter && (
+                    <button>Concluir Adoção</button>
+                  )}
+                  <Link to={`/pet/edit/${pet._id}`}>Editar</Link>
+                  <button>Excluir</button>
+                </>)
+               
+               : <p>Pet já Adotado</p>}
+              </div>
+            </div>
+          ))
+        }
         {pets.length === 0 && <p> Não há Pets cadastrados </p>}
       </div>
     </section>
