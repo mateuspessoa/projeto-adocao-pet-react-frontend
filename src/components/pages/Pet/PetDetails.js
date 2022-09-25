@@ -6,8 +6,22 @@ import { useParams, Link } from 'react-router-dom'
 import useFlashMessage from '../../../hooks/useFlashMessage'
 
 const PetDetails = () => {
+
+    const [pet, setPet] = useState({})
+    const {id} = useParams()
+    const {setFlashMessage} = useFlashMessage()
+    const [token] = useState(localStorage.getItem('token') || '')
+
+    useEffect(() => {
+        api.get(`/pets/${id}`).then((response) => {
+            setPet(response.data.pet)
+        })
+    }, [id])
+
   return (
-    <div>PetDetails</div>
+    <div>
+        <h1>{pet.name}</h1>
+    </div>
   )
 }
 
