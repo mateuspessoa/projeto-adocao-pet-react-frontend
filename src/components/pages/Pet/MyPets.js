@@ -32,23 +32,23 @@ const MyPets = () => {
 
   return (
     <section>
-      <div>
+      <div className='petlist_header'>
         <h1>Meus Pets</h1>
         <Link to="/pet/add">Cadastrar Pet</Link>
       </div>
 
-      <div>
+      <div className='petlist_container'>
         {pets.length > 0 && 
           pets.map((pet) => (
-            <div key={pet._id}>
-              <RoundedImage src={`${process.env.REACT_APP_API}/images/pets/${pet.images[0]}`} alt={pet.name} width="75px" />
+            <div className='petlist_row' key={pet._id}>
+              <RoundedImage src={`${process.env.REACT_APP_API}/images/pets/${pet.images[0]}`} alt={pet.name} width="px75" />
               <span className="bold">{pet.name}</span>
 
               <div className="actions">
                 {pet.available ? 
                 (<>
                   {pet.adopter && (
-                    <button>Concluir Adoção</button>
+                    <button className='conclude_btn'>Concluir Adoção</button>
                   )}
                   <Link to={`/pet/edit/${pet._id}`}>Editar</Link>
                   <button>Excluir</button>
