@@ -21,13 +21,13 @@ const PetDetails = () => {
   return (
     <>
         {pet.name && (
-            <section>
-                <div>
+            <section className='pet_details_container'>
+                <div className='pet_details_header'>
                     <h1>Conhecendo o Pet: {pet.name}</h1>
                     <p>Tem interesse em adotar esse pet? Marque uma visita agora mesmo</p>
                 </div>
 
-                <div>
+                <div className='pet_images'>
                 {pet.images.map((image, index) => (
                         <img key={index} src={`${process.env.REACT_APP_API}/images/pets/${image}`} alt={pet.name}/>
                     ))}
