@@ -41,7 +41,7 @@ const MyPets = () => {
     }).then((response) => {
 
       //Exclui do front-end o pet que foi removido
-      const updatedPets = pets.filter((pet) => pet._id != id)
+      const updatedPets = pets.filter((pet) => pet._id !== id)
       setPets(updatedPets)
 
       return response.data
