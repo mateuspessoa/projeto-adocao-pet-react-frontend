@@ -33,7 +33,40 @@ const EditPet = () => {
 
     }, [token, id])
 
+    //Função para fazer a atualização
     async function updatePet(pet) {
+
+        let msgType = 'success'
+
+        //Serve para enviar as imagens
+        const formData = new FormData()
+
+        //Vai preencher o formData com os dados que serão atualizados ou os que já estão
+        await Object.keys(pet).forEach((key) => {
+            if(key === 'images') {
+                for(let i = 0; i < pet[key].length; i++) {
+                    formData.append('images', pet[key][i])
+                }
+            } else {
+                formData.append(key, pet[key])
+            }
+        })
+
+        const data = await api.patch(`pets/${pet._id}`, formData, {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(token)}`,
+
+                //É necessário pq o formulário contém imagens
+                'Content-Type': 'multipart/form-data'
+            }
+        }).then((response) => {
+            return response.data
+        }).catch((err) => {
+            msgType = 'error'
+            return err.response.data
+        })
+
+        setFlashMessage(data.message, msgType)
 
     }
 
