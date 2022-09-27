@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+![Logo of the project](https://github.com/mateuspessoa/projeto-adocao-pet-react-frontend/blob/master/src/assets/readme/logo.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Projeto Adote um Pet
+Projeto desenvolvido com Node Js para o back-end e React Js para o Front-end. Foi desenvolvido uma API completa de adoção de pet para que houvese o consumo através do React para a criação do front-end.
 
-In the project directory, you can run:
 
-### `npm start`
+## Tecnologias
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Aqui estão as tecnologias utilizadas no projeto.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* Node JS
+* React Js
+* MongoDB
 
-### `npm test`
+## Dependências (Back-End)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Bcryptjs
+* Cookie-parser
+* Express
+* Json Web Token
+* Nodemon
+* Mongoose
+* Multer
+* Sequelize
 
-### `npm run build`
+## Dependências (Front-End)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Axios
+* Events
+* React-Router-Dom
+* React-Icons
+* Web-Vitals
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Hooks Utilizados
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* useState
+* useEffect
+* useContext
 
-### `npm run eject`
+* Nesse projeto também foram utilizados hooks personalizados, que foram compartilhados para todos os componentes através do useContext.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Serviços Usados
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Github
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Como Funciona?
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 1 - Cadastro de um novo usuário.
 
-## Learn More
+![Cadastros](https://github.com/mateuspessoa/projeto-adocao-pet-react-frontend/blob/master/src/assets/readme/cadastroUsuario.gif)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 2 - Caso já tenha um cadastro, efetue o login para poder cadastrar pets ou agendar uma visita de adoção.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Login](https://github.com/mateuspessoa/projeto-adocao-pet-react-frontend/blob/master/src/assets/readme/login%20(4).gif)
 
-### Code Splitting
+### 3 - Edição dos dados do usuário.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![EdicaoUsuario](https://github.com/mateuspessoa/projeto-adocao-pet-react-frontend/blob/master/src/assets/readme/edicaoUsuario.gif)
 
-### Analyzing the Bundle Size
+### 4 - Com o usuário logado você poderá cadastrar, editar ou excluir pets.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![CadastroPet](https://github.com/mateuspessoa/projeto-adocao-pet-react-frontend/blob/master/src/assets/readme/Cria%C3%A7%C3%A3oEdicaoExclusaoPET.gif)
 
-### Making a Progressive Web App
+### 5 - Finalizando uma adoçõa.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![Adocao](https://github.com/mateuspessoa/projeto-adocao-pet-react-frontend/blob/master/src/assets/readme/concluindoAdocao.gif)
 
-### Advanced Configuration
+### 6 - Verificando se a adoção foi concluída.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+![VerificarAdocao](https://github.com/mateuspessoa/projeto-adocao-pet-react-frontend/blob/master/src/assets/readme/verificarAdocao.gif)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Funções
 
-### `npm run build` fails to minify
+As principais funções dessa aplicação são:
+ - Cadastro, edição e Login de usuários.
+ - Cadastro, edição e exclusão de pets
+ - Upload de imagens.
+ - Agendar visita para adotar um pet.
+ - Confirmação da adoção do pet pelo dono do pet.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Links
+  - Repositório (Back-end): https://github.com/mateuspessoa/projeto-adocao-pet-nodejs-backend
+  - Repositório (Front-end): https://github.com/mateuspessoa/projeto-adocao-pet-react-frontend
+    - Deseja entrar em contato comigo? Envie um e-mail para:
+      mateuspessoadev@gmail.com
+      
+    - Meu Linkedin: https://www.linkedin.com/in/mateus-pessoa-17635a22a/
+
+  ## Versão
+
+  1.0.0.0
+
+
+  ## Autor
+
+  * **Mateus de Oliveira Pessoa** 
+
+  Por Favor, siga-me no GitHub!
+  Obrigado pela visita!
